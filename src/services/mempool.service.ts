@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { MempoolTx } from '../types/interfaces';
 
 class MempoolService {
   rpcUrl: string;
@@ -11,7 +12,7 @@ class MempoolService {
     }
   }
 
-  async getMempoolTxs() {
+  async getMempoolTxs(): Promise<MempoolTx[] | undefined> {
     try {
       const response = await axios.post(this.rpcUrl, {
         method: 'parity_pendingTransactions',
