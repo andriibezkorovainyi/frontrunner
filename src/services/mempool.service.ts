@@ -5,6 +5,10 @@ class MempoolService {
 
   constructor() {
     this.rpcUrl = process.env.RPC_URL || '';
+
+    if (!this.rpcUrl) {
+      throw new Error('RPC_URL is not set');
+    }
   }
 
   async getMempoolTxs() {
