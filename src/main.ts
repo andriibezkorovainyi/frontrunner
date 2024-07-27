@@ -1,13 +1,12 @@
-import BloxrouteService from './services/bloxroute.service';
 import configDotenv from 'dotenv';
-import Web3Service from './services/web3.service';
+import MempoolService from './services/mempool.service';
 configDotenv.configDotenv();
 
-function main() {
-  const bloxrouteService = new BloxrouteService();
-  const web3Service = new Web3Service();
+async function main() {
+  const mempoolService = new MempoolService();
+  const mempoolTxs = await mempoolService.getMempoolTxs();
 
-  console.log(bloxrouteService.getBloxrouteData());
+  console.log(mempoolTxs);
 }
 
 main();
